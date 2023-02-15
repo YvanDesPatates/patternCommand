@@ -12,15 +12,24 @@ public class CommandeRemplacer extends CommandeDocument {
     public void executer() {
         if (parameters.length < 4) {
             System.err.println("format attendu : remplacer;0;5;nouveau texte");
+            return;
         }
+
+        int debut, fin;
         try {
-            int debut = Integer.parseInt(parameters[1]);
-            int fin = Integer.parseInt(parameters[2]);
-            document.remplacer(debut, fin, parameters[3]);
+            debut = Integer.parseInt(parameters[1]);
+            fin = Integer.parseInt(parameters[2]);
         }
         catch (NumberFormatException e){
             System.err.println("les arguments deux et trois doivent être des entiers\n format attendu : remplacer;0;5;nouveau texte");
+            return;
+        }
+        if (debut > document.getTexte().length() || fin > document.getTexte().length()){
+            System.err.println("les index fournis sont trop grands et dépassent la longueur du texte d'origine");
+            return;
         }
 
+        document.remplacer(debut, fin, parameters[3]);
+        super.executer();
     }
 }
