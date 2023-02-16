@@ -26,7 +26,7 @@ public class CommandeMajuscule extends CommandeDocument {
             return;
         }
         String newText = document.getTexte().substring(debut, fin).toUpperCase();
-        parameters = new String[]{"remplacer", parameters[1], parameters[2], newText};
-        new CommandeRemplacer(document, parameters).executer();
+        document.remplacer(debut, fin, newText);
+        super.executer();
     }
 }

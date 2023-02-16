@@ -10,7 +10,8 @@ public class CommandeClear extends CommandeDocument{
 
     @Override
     public void executer() {
-        String end = String.valueOf(document.getTexte().length());
-        new CommandeEffacer(document, new String[]{"effacer", "1", end}).executer();
+        int end = document.getTexte().length();
+        document.remplacer(1, end, "");
+        super.executer();
     }
 }

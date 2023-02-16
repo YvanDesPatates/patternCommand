@@ -23,7 +23,7 @@ public class CommandeEffacer extends CommandeDocument{
             System.err.println("les index fournis sont trop grands et dépassent la longueur du texte d'origine");
             return;
         }
-        parameters = new String[]{"remplacer", parameters[1], parameters[2], ""};
-        new CommandeRemplacer(document, parameters).executer();
+        document.remplacer(debut, fin, "");
+        super.executer();
     }
 }
